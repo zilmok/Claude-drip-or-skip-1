@@ -1,0 +1,214 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* DripOrSkip — streetwear dark design system */
+
+@layer base {
+  @font-face {
+    font-family: "Bricolage Grotesque";
+    font-style: normal;
+    font-weight: 200 900;
+    font-display: swap;
+    src: url("https://fonts.gstatic.com/s/bricolagegrotesque/v8/3y9U6as8bTXq_nANBjzKo3IeZx8z6up5BeSl5jBNz_19PpbpMXuECpw.woff2")
+      format("woff2");
+  }
+  @font-face {
+    font-family: "Space Grotesk";
+    font-style: normal;
+    font-weight: 300 700;
+    font-display: swap;
+    src: url("https://fonts.gstatic.com/s/spacegrotesk/v16/V8mDoQDjQSkFtoMM3T6r8E7mF71Q-gOoraIAEj7oUUxjLg.woff2")
+      format("woff2");
+  }
+}
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+
+  --font-sans: "Space Grotesk", system-ui, sans-serif;
+  --font-display: "Bricolage Grotesque", "Space Grotesk", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-drip: var(--drip);
+  --color-drip-foreground: var(--drip-foreground);
+  --color-skip: var(--skip);
+  --color-skip-foreground: var(--skip-foreground);
+  --color-surface: var(--surface);
+  --color-surface-elevated: var(--surface-elevated);
+}
+
+:root {
+  --radius: 1.25rem;
+
+  /* Dark by default — DripOrSkip is born dark */
+  --background: oklch(0.08 0 0);
+  --foreground: oklch(0.98 0 0);
+
+  --surface: oklch(0.12 0 0);
+  --surface-elevated: oklch(0.16 0 0);
+
+  --card: oklch(0.12 0 0);
+  --card-foreground: oklch(0.98 0 0);
+  --popover: oklch(0.14 0 0);
+  --popover-foreground: oklch(0.98 0 0);
+
+  /* Electric lime — the signature accent */
+  --primary: oklch(0.92 0.22 130);
+  --primary-foreground: oklch(0.1 0 0);
+
+  --secondary: oklch(0.18 0 0);
+  --secondary-foreground: oklch(0.98 0 0);
+
+  --muted: oklch(0.18 0 0);
+  --muted-foreground: oklch(0.62 0 0);
+
+  --accent: oklch(0.7 0.21 250); /* electric blue accent */
+  --accent-foreground: oklch(0.1 0 0);
+
+  --destructive: oklch(0.65 0.27 25);
+  --destructive-foreground: oklch(0.98 0 0);
+
+  /* Voting colors */
+  --drip: oklch(0.92 0.22 130); /* lime fire */
+  --drip-foreground: oklch(0.1 0 0);
+  --skip: oklch(0.65 0.27 25); /* hot red */
+  --skip-foreground: oklch(0.98 0 0);
+
+  --border: oklch(0.22 0 0);
+  --input: oklch(0.18 0 0);
+  --ring: oklch(0.92 0.22 130);
+
+  --chart-1: oklch(0.92 0.22 130);
+  --chart-2: oklch(0.7 0.21 250);
+  --chart-3: oklch(0.65 0.27 25);
+  --chart-4: oklch(0.8 0.18 60);
+  --chart-5: oklch(0.6 0.2 320);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    overscroll-behavior: none;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+  .text-glow-drip {
+    text-shadow:
+      0 0 20px oklch(0.92 0.22 130 / 0.6),
+      0 0 40px oklch(0.92 0.22 130 / 0.3);
+  }
+  .text-glow-skip {
+    text-shadow:
+      0 0 20px oklch(0.65 0.27 25 / 0.6),
+      0 0 40px oklch(0.65 0.27 25 / 0.3);
+  }
+  .glow-drip {
+    box-shadow:
+      0 0 24px oklch(0.92 0.22 130 / 0.45),
+      0 0 60px oklch(0.92 0.22 130 / 0.2);
+  }
+  .glow-skip {
+    box-shadow:
+      0 0 24px oklch(0.65 0.27 25 / 0.45),
+      0 0 60px oklch(0.65 0.27 25 / 0.2);
+  }
+  .noise-overlay::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.18 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    mix-blend-mode: overlay;
+    opacity: 0.35;
+  }
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-none {
+    scrollbar-width: none;
+  }
+  .safe-bottom {
+    padding-bottom: max(env(safe-area-inset-bottom), 1rem);
+  }
+  .safe-top {
+    padding-top: env(safe-area-inset-top);
+  }
+  .pt-safe {
+    padding-top: calc(env(safe-area-inset-top) + 1.25rem);
+  }
+  .pt-safe-sm {
+    padding-top: calc(env(safe-area-inset-top) + 0.75rem);
+  }
+  .pt-safe-lg {
+    padding-top: calc(env(safe-area-inset-top) + 1.5rem);
+  }
+  .pt-safe-xl {
+    padding-top: calc(env(safe-area-inset-top) + 2.5rem);
+  }
+  .top-safe {
+    top: calc(env(safe-area-inset-top) + 1rem);
+  }
+}
+
+/* Prevent iOS Safari/WebView from auto-zooming on focus of small inputs */
+@supports (-webkit-touch-callout: none) {
+  input,
+  textarea,
+  select {
+    font-size: 16px;
+  }
+}

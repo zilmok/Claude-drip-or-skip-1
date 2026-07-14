@@ -1,0 +1,1 @@
+ALTER TABLE public.votes DROP CONSTRAINT IF EXISTS votes_post_id_user_id_key;

@@ -1,0 +1,4 @@
+project_id = "dtvemuokskozikvihzjt"
+
+[functions.moderate-image]
+verify_jwt = true
